@@ -1,5 +1,8 @@
 package com.esprit.bizmatch.persistence.entity;
 
+import com.esprit.bizmatch.persistence.enumeration.Domaines;
+import com.twilio.rest.api.v2010.account.sip.Domain;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Set;
@@ -24,6 +27,16 @@ public class User {
     private String userCode;
     @Email
     private String userEmail;
+    @Enumerated(EnumType.STRING)
+    private Domaines Domaines;
+
+    public com.esprit.bizmatch.persistence.enumeration.Domaines getDomaines() {
+        return Domaines;
+    }
+
+    public void setDomaines(com.esprit.bizmatch.persistence.enumeration.Domaines domaines) {
+        Domaines = domaines;
+    }
 
     public String getUserEmail() {
         return userEmail;

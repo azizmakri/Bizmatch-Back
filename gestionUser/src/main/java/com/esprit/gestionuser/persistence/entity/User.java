@@ -1,5 +1,6 @@
 package com.esprit.gestionuser.persistence.entity;
 
+import com.esprit.gestionuser.persistence.enumeration.Domaines;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Set;
@@ -124,6 +125,59 @@ public class User {
         this.role = role;
     }
 
+    public String getLocation() {
+        return location;
+    }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    public String getSiteWeb() {
+        return siteWeb;
+    }
+
+    public void setSiteWeb(String siteWeb) {
+        this.siteWeb = siteWeb;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getLinkedIn() {
+        return linkedIn;
+    }
+
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
+    }
+
+    public com.esprit.gestionuser.persistence.enumeration.Domaines getDomaines() {
+        return Domaines;
+    }
+
+    public void setDomaines(com.esprit.gestionuser.persistence.enumeration.Domaines domaines) {
+        Domaines = domaines;
+    }
+
+    private String location;
+    private String aboutMe;
+    private String siteWeb;
+    private String facebook;
+    private String linkedIn;
+    @Enumerated(EnumType.STRING)
+    private Domaines Domaines;
 }

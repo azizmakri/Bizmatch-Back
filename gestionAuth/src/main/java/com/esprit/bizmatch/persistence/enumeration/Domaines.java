@@ -1,4 +1,4 @@
-package com.esprit.bizmatch.persistence.entity;
+package com.esprit.bizmatch.persistence.enumeration;
 
 public enum Domaines {
     InformatiqueEtTechnologie,
