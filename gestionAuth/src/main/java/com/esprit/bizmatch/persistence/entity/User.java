@@ -57,6 +57,54 @@ public class User {
         return userCode;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    private String location;
+    private String aboutMe;
+
+    public String getSiteWeb() {
+        return siteWeb;
+    }
+
+    public void setSiteWeb(String siteWeb) {
+        this.siteWeb = siteWeb;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getLinkedIn() {
+        return linkedIn;
+    }
+
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
+    }
+
+    private String siteWeb;
+    private String facebook;
+    private String linkedIn;
+
+
     public void setUserCode(String userCode) {
         this.userCode = userCode;
     }
