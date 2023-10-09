@@ -7,6 +7,7 @@ import com.esprit.bizmatch.repositories.UserRepository;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     private UserRepository userDao;
@@ -27,6 +29,24 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private EmailServiceImpl emailServ;
+
+    public User updateUser(String userName, User updatedUser) {
+        // Find the existing user by their username
+        User existingUser = userDao.findById(userName).orElse(null);
+        Set<Role> userRoles = existingUser.getRole();
+        if (existingUser != null) {
+            // Update user properties with the values from updatedUser
+            updatedUser.setUserName(existingUser.getUserName());
+
+            updatedUser.setUserPassword(getEncodedPassword(updatedUser.getUserPassword()));
+            // Save the updated user
+            updatedUser.setRole(userRoles);
+            // As
+            return userDao.save(updatedUser);
+        }
+
+        return null; // User with the given username not found
+    }
 
 
     public void initRoleAndUser() {
@@ -95,9 +115,7 @@ public class UserService {
         u.getRole().clear();
         userDao.delete(u);
     }
-    public void update(User user){
-        userDao.save(user);
-    }
+
     public void addRoleToUser(String roleName, String user)
     {
         Role r = roleDao.findById(roleName).orElse(null);

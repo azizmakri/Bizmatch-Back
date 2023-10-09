@@ -5,6 +5,7 @@ import com.esprit.gestionuser.persistence.entity.User;
 import com.esprit.gestionuser.repository.RoleRepository;
 import com.esprit.gestionuser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class UserService {
     private RoleRepository roleDao;
 
 
+    public void editProfil(User user){
+        userDao.save(user);
+    }
     public List<User> getAll(){
         return userDao.findAll();
     }
@@ -46,6 +50,9 @@ public class UserService {
         }
             return countoperateur;
     }
+
+
+   
     public long countadmin(){
         long countadmin=0;
         List<User> users=userDao.findAll();
