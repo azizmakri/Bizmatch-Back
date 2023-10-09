@@ -34,6 +34,11 @@ public class UserController {
         return "hello uesr service";
     }
 
+
+    @GetMapping("/getUserDetails/{userName}")
+    public User getUserDetails(@PathVariable String userName) {
+        return userService.getUserDetails(userName);
+    }
     @GetMapping({"/users"})
     public List<User> getAll() {
         return userService.getAll();

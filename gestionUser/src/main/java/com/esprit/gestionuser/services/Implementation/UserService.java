@@ -21,7 +21,10 @@ public class UserService {
     @Autowired
     private RoleRepository roleDao;
 
-
+    public User getUserDetails(String userName) {
+        User user = userDao.findById(userName).orElse(null);
+        return user;
+    }
     public void editProfil(User user){
         userDao.save(user);
     }
