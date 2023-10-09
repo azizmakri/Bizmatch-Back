@@ -1,6 +1,7 @@
 package com.esprit.bizmatch.persistence.entity;
 
 import com.esprit.bizmatch.persistence.enumeration.Domaines;
+import com.esprit.bizmatch.persistence.enumeration.RoleDemander;
 import com.twilio.rest.api.v2010.account.sip.Domain;
 
 import javax.persistence.*;
@@ -30,6 +31,16 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Domaines Domaines;
 
+    @Enumerated(EnumType.STRING)
+    private RoleDemander roleDemander;
+
+    public RoleDemander getRoleDemander() {
+        return roleDemander;
+    }
+
+    public void setRoleDemander(RoleDemander roleDemander) {
+        this.roleDemander = roleDemander;
+    }
     public com.esprit.bizmatch.persistence.enumeration.Domaines getDomaines() {
         return Domaines;
     }

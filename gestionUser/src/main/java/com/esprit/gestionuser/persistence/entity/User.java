@@ -1,6 +1,8 @@
 package com.esprit.gestionuser.persistence.entity;
 
 import com.esprit.gestionuser.persistence.enumeration.Domaines;
+import com.esprit.gestionuser.persistence.enumeration.RoleDemander;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Set;
@@ -70,6 +72,17 @@ public class User {
 
     public void setUserNumber(String userNumber) {
         this.userNumber = userNumber;
+    }
+
+    @Enumerated(EnumType.STRING)
+    private RoleDemander roleDemander;
+
+    public RoleDemander getRoleDemander() {
+        return roleDemander;
+    }
+
+    public void setRoleDemander(RoleDemander roleDemander) {
+        this.roleDemander = roleDemander;
     }
 
 

@@ -37,8 +37,8 @@ public class UserService {
         if (existingUser != null) {
             // Update user properties with the values from updatedUser
             updatedUser.setUserName(existingUser.getUserName());
-
-            updatedUser.setUserPassword(getEncodedPassword(updatedUser.getUserPassword()));
+            updatedUser.setUserEmail(existingUser.getUserEmail());
+            updatedUser.setUserPassword(existingUser.getUserPassword());
             // Save the updated user
             updatedUser.setRole(userRoles);
             // As
@@ -47,6 +47,8 @@ public class UserService {
 
         return null; // User with the given username not found
     }
+
+
 
 
     public void initRoleAndUser() {
@@ -70,27 +72,48 @@ public class UserService {
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
         userDao.save(adminUser);
-        Role FournisseurRole = new Role();
-        FournisseurRole.setRoleName("Fournisseur");
-        FournisseurRole.setRoleDescription("Fournisseur role");
-        roleDao.save(FournisseurRole);
 
 
-        Role OperateurRole = new Role();
-        OperateurRole.setRoleName("Operateur");
-        OperateurRole.setRoleDescription("Operateur role");
-        roleDao.save(OperateurRole);
+
+        Role EntreprisesRole = new Role();
+        EntreprisesRole.setRoleName("Entreprises");
+        EntreprisesRole.setRoleDescription("Entreprises role");
+        roleDao.save(EntreprisesRole);
 
 
-//        User user = new User();
-//        user.setUserName("raj123");
-//        user.setUserPassword(getEncodedPassword("raj@123"));
-//        user.setUserFirstName("raj");
-//        user.setUserLastName("sharma");
-//        Set<Role> userRoles = new HashSet<>();
-//        userRoles.add(userRole);
-//        user.setRole(userRoles);
-//        userDao.save(user);
+        Role ReprésentantRole = new Role();
+        ReprésentantRole.setRoleName("Représentant");
+        ReprésentantRole.setRoleDescription("Operateur role");
+        roleDao.save(ReprésentantRole);
+
+        Role entrepriseRole = new Role();
+        entrepriseRole.setRoleName("entreprise");
+        entrepriseRole.setRoleDescription("entreprise role");
+        roleDao.save(entrepriseRole);
+
+        Role VisiteurRole = new Role();
+        VisiteurRole.setRoleName("Visiteur");
+        VisiteurRole.setRoleDescription("Visiteur role");
+        roleDao.save(VisiteurRole);
+
+        Role InvestisseurRole = new Role();
+        InvestisseurRole.setRoleName("Investisseur");
+        InvestisseurRole.setRoleDescription("Investisseur role");
+        roleDao.save(InvestisseurRole);
+
+        Role CollaborateurRole = new Role();
+        CollaborateurRole.setRoleName("Collaborateur");
+        CollaborateurRole.setRoleDescription("Collaborateur role");
+        roleDao.save(CollaborateurRole);
+
+        Role EntrepreneurRole = new Role();
+        EntrepreneurRole.setRoleName("Entrepreneur");
+        EntrepreneurRole.setRoleDescription("Entrepreneur role");
+        roleDao.save(CollaborateurRole);
+
+
+
+
     }
 
     public User registerNewUser(User user) {
@@ -100,8 +123,9 @@ public class UserService {
         emailServ.sendVerificationEmail(user);
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
         userRoles.add(role);
-        user.setRole(userRoles);
 
+        user.setRole(userRoles);
+        user.setRoleDemander(user.getRoleDemander());
         return userDao.save(user);
     }
 
