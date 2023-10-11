@@ -1,5 +1,6 @@
 package com.esprit.bizmatch_gestionevenement_conference.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -62,12 +63,16 @@ public class User {
 
 
     //*********** A propos GestionEvenements+Conferences+ Gestion Reunions ***********//
+    @JsonIgnore
     @OneToMany(mappedBy = "organisateur")
     private List<Evenement> evenementsCrees;
+    @JsonIgnore
     @OneToMany(mappedBy = "organisateur")
     private List<Conference> conferencesCrees;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Participation> participations;
+    @JsonIgnore
     @OneToMany(mappedBy = "organisateur")
     private List<Reunion> reunionsCrees;
     //***************************************************************//
