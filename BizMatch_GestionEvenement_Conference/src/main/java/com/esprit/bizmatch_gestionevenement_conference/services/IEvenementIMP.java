@@ -24,8 +24,7 @@ public class IEvenementIMP implements IEvenementService{
         evenement.setOrganisateur(user);
         return evenementRepository.save(evenement);
     }
-
-   /* @Override
+ /* @Override
     public Evenement updateEvenement(Evenement evenement, String userName) {
         User user = userRepository.findById(userName).orElse(null);
         if (!evenement.getOrganisateur().equals(user)) {
@@ -33,6 +32,7 @@ public class IEvenementIMP implements IEvenementService{
         }
         return evenementRepository.save(evenement);
     }*/
+
 
 
     @Override
