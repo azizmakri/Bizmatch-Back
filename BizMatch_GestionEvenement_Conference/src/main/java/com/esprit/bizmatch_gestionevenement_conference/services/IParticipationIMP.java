@@ -29,6 +29,11 @@ public class IParticipationIMP implements IParticipationService {
             throw new RuntimeException("User not found");
         }
 
+        // Vérifier si l'utilisateur est l'organisateur de l'événement
+        if (evenement.getOrganisateur().equals(user)) {
+            return "Organizer cannot participate in their own event";
+        }
+
         // Vérifier si l'utilisateur a déjà participé
         Participation existingParticipation = participationRepository.findByEvenementAndUser(evenement, user);
         if (existingParticipation != null) {
