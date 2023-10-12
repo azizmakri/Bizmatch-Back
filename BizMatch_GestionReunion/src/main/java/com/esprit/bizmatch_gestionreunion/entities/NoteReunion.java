@@ -18,6 +18,7 @@ public class NoteReunion {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String contenu;
+    private Integer rating;
 
     @JsonIgnore
     @ManyToOne
