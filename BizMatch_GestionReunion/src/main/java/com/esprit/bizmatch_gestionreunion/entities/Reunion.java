@@ -1,5 +1,6 @@
 package com.esprit.bizmatch_gestionreunion.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,9 +33,11 @@ public class Reunion  implements Serializable {
 
     private String urlReunion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "reunion")
     private List<NoteReunion> notesReunion;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "organisateur_id")
     private User organisateur; // Utilisateur qui a créé la réunion
