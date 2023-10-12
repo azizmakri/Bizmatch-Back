@@ -1,5 +1,6 @@
 package com.esprit.bizmatch_gestionevenement_conference.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,10 +36,12 @@ public class Conference implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "evenement_id")
     private Evenement evenement;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "organisateur_id")
     private User organisateur; // Utilisateur qui a créé la conférence

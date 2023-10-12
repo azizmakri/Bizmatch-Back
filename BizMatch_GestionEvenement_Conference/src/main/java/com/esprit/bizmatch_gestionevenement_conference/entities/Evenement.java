@@ -33,9 +33,11 @@ public class Evenement implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "evenement")
     private List<Participation> participations;
+
     @JsonIgnore
     @OneToMany(mappedBy = "evenement")
     private List<Conference> conferences;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "organisateur_id")

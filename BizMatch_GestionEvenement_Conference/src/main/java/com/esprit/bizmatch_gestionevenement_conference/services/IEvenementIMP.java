@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -24,15 +25,35 @@ public class IEvenementIMP implements IEvenementService{
         return evenementRepository.save(evenement);
     }
 
-    @Override
+   /* @Override
     public Evenement updateEvenement(Evenement evenement, String userName) {
         User user = userRepository.findById(userName).orElse(null);
         if (!evenement.getOrganisateur().equals(user)) {
             throw new RuntimeException("User not authorized to update this event");
         }
         return evenementRepository.save(evenement);
-    }
+    }*/
 
+
+    @Override
+    public Evenement updateEvenement(Evenement evenement, String userName) {
+        if (evenement == null || userName == null) {
+            throw new IllegalArgumentException("Event and username must not be null");
+        }
+
+        User user = userRepository.findByUserName(userName);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        if (evenement.getOrganisateur() == user) {
+            evenementRepository.save(evenement);
+        }
+
+        evenement.setOrganisateur(user);
+        return evenementRepository.save(evenement);
+    }
     @Override
     public void deleteEvenement(Integer idEvent, String userName) {
         Evenement evenement = evenementRepository.findById(idEvent)
@@ -59,7 +80,7 @@ public class IEvenementIMP implements IEvenementService{
 
     @Override
     public List<Evenement> getAllEvenements() {
-        return null;
+        return evenementRepository.findAll();
     }
     @Override
     public List<Evenement> getAllEvenementsByUserId(String userName) {

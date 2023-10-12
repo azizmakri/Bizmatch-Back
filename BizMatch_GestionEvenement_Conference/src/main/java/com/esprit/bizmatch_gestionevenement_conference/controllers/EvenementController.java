@@ -23,7 +23,7 @@ public class EvenementController {
         return iEvenementService.updateEvenement(evenement, userName);
     }
 
-    @DeleteMapping("/delete/{id}/{userName}")
+    @DeleteMapping("/delete/{idEvent}/{userName}")
     public void deleteEvenement(@PathVariable Integer idEvent, @PathVariable String userName) {
         iEvenementService.deleteEvenement(idEvent, userName);
     }
@@ -38,7 +38,7 @@ public class EvenementController {
         return iEvenementService.getAllEvenements();
     }
     @GetMapping("/allEvents/{userName}")
-    public List<Evenement> getAllEvenementsByUserId(@RequestParam String userName) {
+    public List<Evenement> getAllEvenementsByUserId(@PathVariable String userName) {
         return iEvenementService.getAllEvenementsByUserId(userName);
     }
 
