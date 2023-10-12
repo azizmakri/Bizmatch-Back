@@ -7,6 +7,7 @@ import com.esprit.bizmatch.services.Implementation.UserService;
 import com.esprit.bizmatch.services.Implementation.VerificationTokenService;
 import com.esprit.bizmatch.util.UserCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,6 +42,14 @@ public class UserController {
     @GetMapping({"/hello"})
     public String hello() {
         return ("hello auth service");
+    }
+
+
+    @PutMapping("/updateUser/{username}")
+    public User updateUser(@PathVariable String username , @RequestBody User userDetails) {
+
+            return userService.updateUser(username,userDetails);
+
     }
 
     @PostConstruct
@@ -79,12 +88,6 @@ public class UserController {
     @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable String userName) {
         userService.delete(userName);
-    }
-
-    @PutMapping({"/update"})
-    @PreAuthorize("hasRole('User')")
-    public void update(@Valid @RequestBody User user) {
-        userService.update(user);
     }
 
     @GetMapping("/count")

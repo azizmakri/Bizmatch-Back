@@ -1,5 +1,7 @@
 package com.esprit.gestionuser.services.Implementation;
+import com.esprit.gestionuser.persistence.entity.User;
 import com.esprit.gestionuser.repository.CrudRepository;
+import com.esprit.gestionuser.repository.UserRepository;
 import com.esprit.gestionuser.services.Interface.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,6 +13,8 @@ public class CrudServiceIMP<T,ID> implements CrudService<T,ID> {
     @Autowired
     public CrudRepository<T,ID> crudRepository;
 
+    @Autowired
+    private UserRepository userDao;
     @Override
     public List<T> retrieveAll() {
         try{

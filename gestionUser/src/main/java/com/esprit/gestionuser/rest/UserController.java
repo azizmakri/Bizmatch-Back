@@ -4,6 +4,7 @@ import com.esprit.gestionuser.persistence.entity.User;
 import com.esprit.gestionuser.repository.UserRepository;
 import com.esprit.gestionuser.services.Implementation.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -60,14 +61,10 @@ public class UserController {
         return userService.countadmin();
     }
 
+
     @GetMapping("/countusers")
     public long countusers() {
         return userService.countusers();
-    }
-
-    @GetMapping("/getUserDetails/{userName}")
-    public User getUserDetails(@PathVariable String userName) {
-        return userService.getUserDetails(userName);
     }
 
 }

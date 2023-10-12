@@ -33,6 +33,15 @@ spring:
           lb://gestionAuth
         predicates:
           - Path=/auth/**
+
+      - id: gestionPartenairesPotentiels
+        uri:
+          lb://gestionPartenairesPotentiels
+        predicates:
+          - Path=/partenairesPotentiels/**
         
-        
-          
+      - id: gestionOpportuniteCollaboration
+        uri:
+          lb://gestionOpportuniteCollaboration
+        predicates:
+          - Path=/opportuniteCollaboration/**
