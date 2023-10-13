@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/DeveloppementBusiness
+COPY target/*.jar /app/DeveloppementBusiness.jar
+EXPOSE 9092
+CMD ["java","-jar","/app/DeveloppementBusiness.jar"]
