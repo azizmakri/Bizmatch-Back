@@ -1,5 +1,7 @@
 package com.example.opportunitecollaboration.Services;
 
+import com.example.opportunitecollaboration.Entities.Commentaire;
+
 import java.util.List;
 
 public interface CommentaireService {

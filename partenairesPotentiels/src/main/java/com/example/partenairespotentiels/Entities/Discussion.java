@@ -22,7 +22,7 @@ public class Discussion implements Serializable {
     private Long idDiscussion;
 
     // Liste des participants à cette discussion (expéditeurs et destinataires)
-    @JsonIgnore
+   
     @ManyToMany
     private List<User> participantsDiscussion;
 

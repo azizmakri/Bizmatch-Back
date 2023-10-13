@@ -1,5 +1,6 @@
 package com.example.opportunitecollaboration.Services;
 
+import com.example.opportunitecollaboration.Entities.OpportuniteCollaboration;
 import com.example.opportunitecollaboration.Repositories.OpportuniteCollaborationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
