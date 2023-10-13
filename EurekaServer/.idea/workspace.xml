@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bae9658-4f88-4941-be39-25da83c14952" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/BizMatchGestionEvenementConferenceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/BizMatchGestionEvenementConferenceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ConferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ConferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ParicipationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ParicipationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionReunion/src/main/java/com/esprit/bizmatch_gestionreunion/BizMatchGestionReunionApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionReunion/src/main/java/com/esprit/bizmatch_gestionreunion/BizMatchGestionReunionApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bizmatch-Back/src/main/java/com/example/paymentms/Controller/StripeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bizmatch-Back/src/main/java/com/example/paymentms/Controller/StripeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "azer",
-    "last_opened_file_path": "C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/BizMatch_GestionEvenement_Conference",
+    "last_opened_file_path": "C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/Bizmatch-Back",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697154552913</updated>
       <workItem from="1697154553917" duration="1312000" />
-      <workItem from="1697208256697" duration="7051000" />
+      <workItem from="1697208256697" duration="7564000" />
     </task>
     <servers />
   </component>
