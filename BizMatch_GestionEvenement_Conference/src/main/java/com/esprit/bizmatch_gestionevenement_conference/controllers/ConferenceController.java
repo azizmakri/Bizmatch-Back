@@ -9,7 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/conference")
+@RequestMapping("/evenement")
 public class ConferenceController {
     IConferenceService iConferenceService;
 

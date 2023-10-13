@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/participation")
+@RequestMapping("/evenement")
 public class ParicipationController {
 
     IParticipationService iParticipationService;
