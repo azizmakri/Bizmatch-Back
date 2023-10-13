@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/OpportuiniteCollob
+COPY target/*.jar /app/OpportuiniteCollob.jar
+EXPOSE 9095
+CMD ["java","-jar","/app/OpportuiniteCollob.jar"]
