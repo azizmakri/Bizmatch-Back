@@ -5,10 +5,23 @@ import com.esprit.bizmatch_gestionevenement_conference.entities.Evenement;
 import com.esprit.bizmatch_gestionevenement_conference.services.IConferenceService;
 import com.esprit.bizmatch_gestionevenement_conference.services.IEvenementService;
 import com.esprit.bizmatch_gestionevenement_conference.services.IParticipationService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
@@ -20,15 +33,68 @@ public class gestionEventConfController {
     IParticipationService iParticipationService;
 
     //************************** Evenement Methods **********************************//
-    @PostMapping("/createEvent/{userName}")
+   /* @PostMapping("/createEvent/{userName}")
     public Evenement createEvenement(@RequestBody Evenement evenement, @PathVariable String userName) {
         return iEvenementService.createEvenement(evenement,userName);
+    }*/
+
+
+    @PostMapping("/createEvent")
+    public ResponseEntity<Evenement> createEvenement(
+            @RequestParam String nom,
+            @RequestParam String description,
+            @RequestParam Date dateDebut,
+            @RequestParam Date dateFin,
+            @RequestParam MultipartFile image,
+            @RequestParam String lieu,
+            @RequestParam Integer nombreParticipants,
+            @RequestParam String userName
+    ) {
+        try {
+            Evenement evenement = iEvenementService.addEvenement(
+                    nom, description, dateDebut, dateFin, image, lieu, nombreParticipants, userName
+            );
+            return new ResponseEntity<>(evenement, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @PutMapping("/updateEvent/{userName}")
+    @PutMapping("/updateEvent/{eventId}/{userName}")
+    public ResponseEntity<Evenement> updateEvenement(
+            @PathVariable Integer eventId,
+            @RequestParam String nom,
+            @RequestParam String description,
+            @RequestParam Date dateDebut,
+            @RequestParam Date dateFin,
+            @RequestParam MultipartFile image,
+            @RequestParam String lieu,
+            @RequestParam Integer nombreParticipants,
+            @PathVariable String userName
+    ) {
+        try {
+            Evenement evenement = new Evenement();
+            evenement.setId(eventId); // Définir l'ID de l'événement à mettre à jour
+            evenement.setNom(nom);
+            evenement.setDescription(description);
+            evenement.setDateDebut(dateDebut);
+            evenement.setDateFin(dateFin);
+            evenement.setLieu(lieu);
+            evenement.setNombreParticipants(nombreParticipants);
+
+            Evenement updatedEvenement = iEvenementService.updateEvenement(eventId, nom, description, dateDebut, dateFin, image, lieu, nombreParticipants, userName);
+            return new ResponseEntity<>(updatedEvenement, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    /*@PutMapping("/updateEvent/{userName}")
     public Evenement updateEvenement(@RequestBody Evenement evenement, @PathVariable String userName) {
         return iEvenementService.updateEvenement(evenement, userName);
-    }
+    }*/
 
     @DeleteMapping("/deleteEvent/{idEvent}/{userName}")
     public void deleteEvenement(@PathVariable Integer idEvent, @PathVariable String userName) {
