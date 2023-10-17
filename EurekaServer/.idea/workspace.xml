@@ -5,30 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bae9658-4f88-4941-be39-25da83c14952" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../API_Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../API_Gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BesoinMarche/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BesoinMarche/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionReunion/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionReunion/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionReunion/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionReunion/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionReunion/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionReunion/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bizmatch-Back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CRM/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CRM/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DecouverteMarche/src/main/java/com/esprit/decouvertemarche/DecouverteMarcheApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DecouverteMarche/src/main/java/com/esprit/decouvertemarche/DecouverteMarcheApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DecouverteMarche/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DecouverteMarche/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Developpement Business/src/main/java/com/esprit/developpementbusiness/DeveloppementBusinessApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Developpement Business/src/main/java/com/esprit/developpementbusiness/DeveloppementBusinessApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Developpement Business/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Developpement Business/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/gestionEventConfController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ConferenceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/EvenementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/ParicipationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/Conference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MsClaim/src/main/java/tn/esprit/msclaim/MsClaimApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MsClaim/src/main/java/tn/esprit/msclaim/MsClaimApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MsClaim/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../MsClaim/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpportuniteCollaboration/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../OpportuniteCollaboration/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PenetrationMarketing/src/main/java/com/esprit/penetrationmarketing/PenetrationMarketingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PenetrationMarketing/src/main/java/com/esprit/penetrationmarketing/PenetrationMarketingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PenetrationMarketing/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PenetrationMarketing/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gestionAuth/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gestionAuth/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gestionUser/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gestionUser/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../partenairesPotentiels/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../partenairesPotentiels/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../prestationService/src/main/java/com/esprit/prestationservice/PrestationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../prestationService/src/main/java/com/esprit/prestationservice/PrestationServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../prestationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../prestationService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "azer",
-    "last_opened_file_path": "C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/API_Gateway",
+    "last_opened_file_path": "C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/EurekaServer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,7 +68,9 @@
       <updated>1697154552913</updated>
       <workItem from="1697154553917" duration="1312000" />
       <workItem from="1697208256697" duration="8456000" />
-      <workItem from="1697452273218" duration="1574000" />
+      <workItem from="1697452273218" duration="1576000" />
+      <workItem from="1697455194581" duration="1019000" />
+      <workItem from="1697544368372" duration="659000" />
     </task>
     <servers />
   </component>

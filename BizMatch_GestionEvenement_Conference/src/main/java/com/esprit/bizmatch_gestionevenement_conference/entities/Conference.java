@@ -27,6 +27,8 @@ public class Conference implements Serializable {
 
     private String description;
 
+    private String urlConference;
+
     @Enumerated(EnumType.STRING)
     private TypeConference typeConference;
 
