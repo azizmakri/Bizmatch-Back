@@ -57,7 +57,7 @@ public class CheckoutPayment {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity() {
         this.quantity = quantity;
     }
 
