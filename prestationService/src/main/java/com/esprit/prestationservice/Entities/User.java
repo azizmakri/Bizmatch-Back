@@ -1,5 +1,7 @@
 package com.esprit.prestationservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +37,7 @@ public class User {
     @Email
     private String userEmail;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "fournisseur")
     private List<ServiceFournisseur> serviceFournisseurs;
 

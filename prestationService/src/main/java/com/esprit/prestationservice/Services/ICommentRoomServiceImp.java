@@ -1,6 +1,11 @@
 package com.esprit.prestationservice.Services;
 
 import com.esprit.prestationservice.Entities.CommentRoom;
+import com.esprit.prestationservice.Entities.Room;
+import com.esprit.prestationservice.Entities.User;
+import com.esprit.prestationservice.Repositories.CommentRoomRepo;
+import com.esprit.prestationservice.Repositories.RoomRepo;
+import com.esprit.prestationservice.Repositories.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,16 +14,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @Service
 @AllArgsConstructor
 public class ICommentRoomServiceImp implements ICommentRoomService{
 
+    public final UserRepo userRepo;
+    public final CommentRoomRepo commentRepo;
+    public final RoomRepo roomRepo;
 
     private List<String> fetchBadWords() {
         List<String> badWords = new ArrayList<>();
@@ -60,26 +65,50 @@ public class ICommentRoomServiceImp implements ICommentRoomService{
 
     @Override
     public List<CommentRoom> getAllComments() {
-        return null;
-    }
-
-    @Override
-    public CommentRoom editComment(CommentRoom commentRoom, String idUser, Long idRoom) {
-        return null;
+        return commentRepo.findAll();
     }
 
     @Override
     public void deleteComment(Long commentId, String idUser) {
-
+        User user=userRepo.findById(idUser).orElse(null);
+        CommentRoom comment=commentRepo.findById(commentId).orElse(null);
+        if(user!=null&&comment!=null){
+            if (comment.getUser().equals(user))
+                commentRepo.deleteById(commentId);
+        }
     }
 
     @Override
     public CommentRoom addComment(CommentRoom commentRoom, String idUser, Long idRoom) {
-        return null;
+        User user = userRepo.findById(idUser).orElse(null);
+        System.out.println("id user "+idUser);
+        Room room = roomRepo.findById(idRoom).orElse(null);
+        System.out.println("this my idpost "+ idRoom);
+
+
+        if (user != null && room != null && commentRoom.getDescriptionComment() != null) {
+            String commentTextWithEmoji = convertEmoticonsToEmoji(commentRoom.getDescriptionComment());
+            commentRoom.setDescriptionComment(commentTextWithEmoji);
+            List<String> badWords = fetchBadWords();
+
+            for (String badWord : badWords) {
+                if (commentRoom.getDescriptionComment().toLowerCase().contains(badWord.toLowerCase())) {
+                    String asterisks = String.join("", Collections.nCopies(badWord.length(), "*"));
+                    commentRoom.setDescriptionComment(commentRoom.getDescriptionComment().toLowerCase().replace(badWord.toLowerCase(), asterisks));
+                }
+            }
+
+            commentRoom.setUser(user);
+            commentRoom.setRoom(room);
+            commentRoom.setDateCreationComment(new Date());
+            System.out.println("this my comment "+ commentRoom);
+
+            return commentRepo.save(commentRoom);
+
+        } else {
+            return null;
+        }
     }
 
-    @Override
-    public CommentRoom getById(Long commentId) {
-        return null;
-    }
+
 }

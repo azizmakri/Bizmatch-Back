@@ -1,6 +1,7 @@
 package com.esprit.prestationservice.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,11 +28,15 @@ public class ServiceFournisseur implements Serializable {
     private float prixService;
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"serviceFournisseurs"})
     @ManyToOne
     private User fournisseur;
 
     @JsonIgnore
     @OneToMany(mappedBy = "serviceFournisseur")
     private List<LikeService> likeServices;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "serviceFournisseur")
+    private List<Room> rooms;
 }
