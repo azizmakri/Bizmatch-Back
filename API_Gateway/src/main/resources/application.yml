@@ -93,3 +93,13 @@ spring:
             lb://paymentMs
           predicates:
             - Path=/api/**
+
+        - id: GestionCRM
+          uri:
+            lb://GestionCRM
+          predicates:
+            - Path=/formulaires/**
+
+
+
+
