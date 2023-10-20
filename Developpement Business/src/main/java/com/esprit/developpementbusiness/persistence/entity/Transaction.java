@@ -25,9 +25,7 @@ public class Transaction implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTransaction; // La date à laquelle la transaction a eu lieu.
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "opportunite_id")
-    private Opportunite opportunite; //L'opportunité qui a conduit à cette transaction.
+
 
 
 }

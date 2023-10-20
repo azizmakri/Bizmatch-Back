@@ -2,7 +2,6 @@ package com.esprit.developpementbusiness.rest;
 
 import com.esprit.developpementbusiness.persistence.entity.ObjectifCommercial;
 import com.esprit.developpementbusiness.services.interfaces.ObjectifCommercialService;
-import com.esprit.developpementbusiness.services.interfaces.OpportuniteService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +14,6 @@ import java.util.List;
 public class ObjectifCommercialController {
     @Autowired
     private ObjectifCommercialService objectifService;
-
-    @Autowired
-    private OpportuniteService oppService;
 
     @PostMapping("/objectif/add")
     public ObjectifCommercial add(@RequestBody ObjectifCommercial objectifCommercial) {

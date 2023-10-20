@@ -1,6 +1,9 @@
 package com.esprit.penetrationmarketing.persistence.entity;
 
+import com.esprit.penetrationmarketing.persistence.enumeration.Devise;
 import com.esprit.penetrationmarketing.persistence.enumeration.StatusCampagne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,12 +43,16 @@ public class CampagneMarketing implements Serializable {
     private Double budget;
 
     @Enumerated(EnumType.STRING)
+    private Devise devise;
+
+    @Enumerated(EnumType.STRING)
     private StatusCampagne statut;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User entreprise;
 
     @OneToMany(mappedBy = "campagneMarketing", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"campagneMarketing"})
     private List<Contenu> contenus;
 
     @OneToMany(mappedBy = "campagneMarketing", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

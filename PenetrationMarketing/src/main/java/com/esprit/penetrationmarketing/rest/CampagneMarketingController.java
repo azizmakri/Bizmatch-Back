@@ -26,12 +26,12 @@ public class CampagneMarketingController {
         return	campagneMarketingService.Update(campagneMarketing);
     }
 
-    @GetMapping("/campagne/getAll")
+    @GetMapping("/campagne/")
     public List<CampagneMarketing> getAll() {
         return campagneMarketingService.findAll();
     }
 
-    @GetMapping("/campagne/getById/{id}")
+    @GetMapping("/campagne/{id}")
     public CampagneMarketing getById(@PathVariable Long id) {
         return campagneMarketingService.findById(id);
     }
