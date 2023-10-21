@@ -1,6 +1,7 @@
 package com.esprit.developpementbusiness.persistence.entity;
 
 import com.esprit.developpementbusiness.persistence.enumeration.EtatObjectif;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,6 +46,7 @@ public class ObjectifCommercial implements Serializable {
     private User entreprise;
 
     @OneToMany(mappedBy = "objectifCommercial", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"objectifCommercial"})
     private List<StrategieMarketing> strategies; // Les différentes stratégies marketing associées à cet objectif.
 }
 

@@ -54,6 +54,8 @@ public class User {
 
     private int isverified;
 
+    private String image;
+
     private String verificationToken;
 
     public String getUserCode() {

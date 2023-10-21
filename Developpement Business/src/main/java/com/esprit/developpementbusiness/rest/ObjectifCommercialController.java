@@ -24,12 +24,12 @@ public class ObjectifCommercialController {
         return	objectifService.Update(objectifCommercial);
     }
 
-    @GetMapping("/objectif/getAll")
+    @GetMapping("/objectif/")
     public List<ObjectifCommercial> getAll() {
         return objectifService.findAll();
     }
 
-    @GetMapping("/objectif/getById/{id}")
+    @GetMapping("/objectif/{id}")
     public ObjectifCommercial getById(@PathVariable Long id) {
         return objectifService.findById(id);
     }

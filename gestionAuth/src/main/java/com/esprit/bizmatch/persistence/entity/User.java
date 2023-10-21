@@ -31,6 +31,16 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Domaines Domaines;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
+
     @Enumerated(EnumType.STRING)
     private RoleDemander roleDemander;
 

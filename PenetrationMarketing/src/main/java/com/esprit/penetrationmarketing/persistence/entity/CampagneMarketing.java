@@ -31,11 +31,11 @@ public class CampagneMarketing implements Serializable {
     @NotBlank(message = "ce champ ne doit pas être vide")
     private String description;
 
-    @NotNull
+
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
 
-    @NotNull
+
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 

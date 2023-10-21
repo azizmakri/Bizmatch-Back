@@ -2,15 +2,19 @@ package com.esprit.bizmatch.services.Implementation;
 
 import com.esprit.bizmatch.persistence.entity.Role;
 import com.esprit.bizmatch.persistence.entity.User;
+import com.esprit.bizmatch.persistence.enumeration.Domaines;
 import com.esprit.bizmatch.repositories.RoleRepository;
 import com.esprit.bizmatch.repositories.UserRepository;
+import com.esprit.bizmatch.services.Interface.UploadFileService;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
@@ -30,6 +34,12 @@ public class UserService {
     @Autowired
     private EmailServiceImpl emailServ;
 
+    @Autowired
+    private UploadFileService uploadFileService;
+
+    @Value("${file.upload}")
+    private String pathFile;
+
     public User updateUser(String userName, User updatedUser) {
         // Find the existing user by their username
         User existingUser = userDao.findById(userName).orElse(null);
@@ -47,6 +57,36 @@ public class UserService {
 
         return null; // User with the given username not found
     }
+
+
+    public User UpdateAvecImage(String userName, String userFirstName, String userLastName, MultipartFile image, Domaines domaines, String siteWeb, String facebook, String linkedIn, String aboutMe, String location) {
+        User existingUser = userDao.findById(userName).orElse(null);
+
+        if (existingUser == null) {
+            throw new RuntimeException("User with the given username not found.");
+        }
+
+        // Sauvegarde de l'image
+        boolean fileAdded = uploadFileService.addFile(image);
+        if (!fileAdded) {
+            throw new RuntimeException("Erreur lors de la sauvegarde de l'image.");
+        }
+        String imagePath = pathFile + image.getOriginalFilename();
+
+        // Update existingUser properties with new values
+        existingUser.setUserFirstName(userFirstName);  // Assuming you have setters like these
+        existingUser.setUserLastName(userLastName);
+        existingUser.setDomaines(domaines);
+        existingUser.setSiteWeb(siteWeb);
+        existingUser.setFacebook(facebook);
+        existingUser.setLinkedIn(linkedIn);
+        existingUser.setAboutMe(aboutMe);
+        existingUser.setLocation(location);
+        existingUser.setImage(imagePath);          // Assuming you have setImage method in User entity
+
+        return userDao.save(existingUser);
+    }
+
 
 
 
