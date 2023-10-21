@@ -21,13 +21,14 @@ public class Room implements Serializable {
     private Long idRoom;
     private String roomName;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"rooms"})
     @ManyToMany
     private List<User> users;
 
     @JsonIgnoreProperties(value = {"room"})
     @OneToMany(mappedBy = "room")
     private List<CommentRoom> commentRoomList;
+
 
     @JsonIgnore
     @ManyToOne

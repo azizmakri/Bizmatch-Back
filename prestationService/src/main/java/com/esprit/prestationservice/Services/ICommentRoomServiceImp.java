@@ -101,6 +101,7 @@ public class ICommentRoomServiceImp implements ICommentRoomService{
             commentRoom.setUser(user);
             commentRoom.setRoom(room);
             commentRoom.setDateCreationComment(new Date());
+            commentRoom.setCommentUserId(user.getUserName());
             System.out.println("this my comment "+ commentRoom);
 
             return commentRepo.save(commentRoom);

@@ -1,24 +1,20 @@
-package com.esprit.prestationservice.Entities;
+package com.esprit.decouvertemarche.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.esprit.decouvertemarche.persistence.enumeration.Domaines;
+import com.esprit.decouvertemarche.persistence.enumeration.RoleDemander;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+@AllArgsConstructor
+public class User {
     @Id
     @NotBlank(message = "Ce champ est obligatoire")
     @Size(min = 3, message = "Ce champs doit contenir au moins 3 caractères")
@@ -37,22 +33,19 @@ public class User implements Serializable {
     private String userCode;
     @Email
     private String userEmail;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "fournisseur")
-    private List<ServiceFournisseur> serviceFournisseurs;
-
-    @OneToMany(mappedBy = "entreprise")
-    private List<LikeService> likeServices;
-
-    @OneToMany(mappedBy = "entreprise")
-    private List<DislikeService> dislikeServices;
-    private int isverified;
-
-    private String verificationToken;
-
+    @Enumerated(EnumType.STRING)
+    private Domaines Domaines;
     @Enumerated(EnumType.STRING)
     private RoleDemander roleDemander;
+    private int isverified;
+    private String verificationToken;
+    private String location;
+    private String aboutMe;
+    private String siteWeb;
+    private String facebook;
+    private String linkedIn;
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
@@ -63,21 +56,12 @@ public class User implements Serializable {
             }
     )
     private Set<Role> role;
-    private String location;
-    private String aboutMe;
-    private String siteWeb;
-    private String facebook;
-    private String linkedIn;
-    @Enumerated(EnumType.STRING)
-    private Domaines Domaines;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "entreprise")
+    @ToString.Exclude
+    private List<OpportuniteMarche> opportunitesMarche;
 
-
-    @ManyToMany(mappedBy = "users")
-    private List<Room> rooms;
-
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<CommentRoom>commentList;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+    @ToString.Exclude
+    private List<DecouverteMarche> decouverteMarches;
 }
