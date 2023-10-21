@@ -88,6 +88,8 @@ spring:
           predicates:
             - Path=/marketing/**
 
+
+
         - id: paymentMs
           uri:
             lb://paymentMs
