@@ -39,6 +39,7 @@ public class IRoomServiceImp implements IRoomService{
         users.add(fournisseur);
         room.setUsers(users);
         room.setServiceFournisseur(serviceFournisseur);
+        room.setRoomName(entreprise.getUserName()+" "+fournisseur.getUserName()+" "+serviceFournisseur.getNomService());
         return roomRepo.save(room);
     }
 

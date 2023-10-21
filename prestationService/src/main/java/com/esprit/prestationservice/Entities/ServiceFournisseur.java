@@ -39,4 +39,5 @@ public class ServiceFournisseur implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "serviceFournisseur")
     private List<Room> rooms;
+
 }

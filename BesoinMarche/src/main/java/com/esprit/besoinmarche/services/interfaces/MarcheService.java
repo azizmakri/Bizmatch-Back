@@ -12,6 +12,6 @@ public interface MarcheService {
     public List<Marche> findAll();
     public  Marche findById(Long id);
     public boolean deleteById(Long id);
-    public List<Marche> findBestMatch(Besoin besoin);
+    public List<Marche> findBestMatch(long besoinId);
     public List<Marche> findMarchesByCritere(String nom, Double valeur);
 }

@@ -3,6 +3,7 @@ package com.esprit.besoinmarche.services.implementation;
 import com.esprit.besoinmarche.persistence.entity.Besoin;
 import com.esprit.besoinmarche.persistence.entity.Critere;
 import com.esprit.besoinmarche.persistence.entity.Marche;
+import com.esprit.besoinmarche.repositories.BesoinRepository;
 import com.esprit.besoinmarche.repositories.CritereRepository;
 import com.esprit.besoinmarche.repositories.MarcheRepository;
 import com.esprit.besoinmarche.services.interfaces.MarcheService;
@@ -20,6 +21,10 @@ public class MarcheServiceIMP implements MarcheService {
 
     @Autowired
     private CritereRepository critereRepository;
+
+
+    @Autowired
+    private BesoinRepository besoinRepository;
     private static final double weight1 = 0.3;
     private static final double weight2 = 0.4;
     private static final double weight3 = 0.3;
@@ -57,7 +62,8 @@ public class MarcheServiceIMP implements MarcheService {
         return MRepository.findByCriteresIn(criteres);
     }
     @Override
-    public List<Marche> findBestMatch(Besoin besoin) {
+    public List<Marche> findBestMatch(long besoinId) {
+        Besoin besoin=besoinRepository.findById(besoinId).orElse(null);
         List<Marche> allMarches = MRepository.findAll();
         return allMarches.stream()
                 .filter(marche -> matchMarcheWithBesoin(marche, besoin))

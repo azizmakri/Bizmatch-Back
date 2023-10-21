@@ -1,11 +1,11 @@
 server:
   port: 8083
-  
+
 spring:
   application:
     name: API_GATEWAY
-    
-    
+
+
   cloud:
     gateway:
       globalcors:
@@ -21,75 +21,75 @@ spring:
             allowedHeaders: "*" # or specify headers
             allowCredentials: true
       routes:
-      - id: gestionUser
-        uri:
-          lb://gestionUser
-        predicates:
-        - Path=/user/**
+        - id: gestionUser
+          uri:
+            lb://gestionUser
+          predicates:
+            - Path=/user/**
 
 
-      - id: gestionAuth
-        uri:
-          lb://gestionAuth
-        predicates:
-          - Path=/auth/**
-        
-      - id: gestionPartenairesPotentiels
-        uri:
-          lb://gestionPartenairesPotentiels
-        predicates:
-          - Path=/partenairesPotentiels/**
+        - id: gestionAuth
+          uri:
+            lb://gestionAuth
+          predicates:
+            - Path=/auth/**
 
-      - id: gestionOpportuniteCollaboration
-        uri:
-          lb://gestionOpportuniteCollaboration
-        predicates:
-          - Path=/opportuniteCollaboration/**
+        - id: gestionPartenairesPotentiels
+          uri:
+            lb://gestionPartenairesPotentiels
+          predicates:
+            - Path=/partenairesPotentiels/**
 
-      - id: gestionEvenement_Conference
-        uri:
-          lb://gestionEvenement_Conference
-        predicates:
-          - Path=/evenement/**
+        - id: gestionOpportuniteCollaboration
+          uri:
+            lb://gestionOpportuniteCollaboration
+          predicates:
+            - Path=/opportuniteCollaboration/**
 
-      - id: gestionReunion
-        uri:
-          lb://gestionReunion
-        predicates:
-          - Path=/reunion/**
+        - id: gestionEvenement_Conference
+          uri:
+            lb://gestionEvenement_Conference
+          predicates:
+            - Path=/evenement/**
 
-      - id: prestationService
-        uri:
-          lb://prestationService
-        predicates:
-          - Path=/prestationservice/**
+        - id: gestionReunion
+          uri:
+            lb://gestionReunion
+          predicates:
+            - Path=/reunion/**
 
-      - id: gestionDecouverteMarche
-        uri:
-          lb://gestionDecouverteMarche
-        predicates:
-          - Path=/Marche/**
+        - id: prestationService
+          uri:
+            lb://prestationService
+          predicates:
+            - Path=/prestationservice/**
 
-      - id: gestionBesoinMarche
-        uri:
-          lb://gestionBesoinMarche
-        predicates:
-          - Path=/besoinMarche/**
+        - id: gestionDecouverteMarche
+          uri:
+            lb://gestionDecouverteMarche
+          predicates:
+            - Path=/Marche/**
 
-      - id: GestionDeveloppementBusiness
-        uri:
-          lb://GestionDeveloppementBusiness
-        predicates:
-          - Path=/DevBusiness/**
+        - id: gestionBesoinMarche
+          uri:
+            lb://gestionBesoinMarche
+          predicates:
+            - Path=/besoinMarche/**
 
-      - id: GestionPenetrationMarche
-        uri:
-          lb://GestionPenetrationMarche
-        predicates:
-          - Path=/marketing/**
+        - id: GestionDeveloppementBusiness
+          uri:
+            lb://GestionDeveloppementBusiness
+          predicates:
+            - Path=/DevBusiness/**
 
-      - id: paymentMs
-        uri:
-          lb://paymentMs
-        predicates:
-          - Path=/api/**
+        - id: GestionPenetrationMarche
+          uri:
+            lb://GestionPenetrationMarche
+          predicates:
+            - Path=/marketing/**
+
+        - id: paymentMs
+          uri:
+            lb://paymentMs
+          predicates:
+            - Path=/api/**

@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
     @Id
     @NotBlank(message = "Ce champ est obligatoire")
     @Size(min = 3, message = "Ce champs doit contenir au moins 3 caractères")
@@ -74,6 +75,9 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private List<Room> rooms;
+
+
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<CommentRoom>commentList;
 }

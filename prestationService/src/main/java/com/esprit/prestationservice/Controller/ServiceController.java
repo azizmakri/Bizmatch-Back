@@ -1,7 +1,9 @@
 package com.esprit.prestationservice.Controller;
 
+import com.esprit.prestationservice.Entities.CommentRoom;
 import com.esprit.prestationservice.Entities.Room;
 import com.esprit.prestationservice.Entities.ServiceFournisseur;
+import com.esprit.prestationservice.Services.ICommentRoomService;
 import com.esprit.prestationservice.Services.IRoomService;
 import com.esprit.prestationservice.Services.ServiceFournisseurService;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.List;
 public class ServiceController {
     public final ServiceFournisseurService sfs;
     public final IRoomService roomService;
+    public final ICommentRoomService commentService;
 
     @GetMapping("/getall")
     public List<ServiceFournisseur> getall(){
@@ -56,5 +59,10 @@ public class ServiceController {
     @GetMapping("/getRoomsByUser/{idUser}")
     public List<Room> getRoomsByUser(@PathVariable String idUser){
         return roomService.getRoomsByUser(idUser);
+    }
+
+    @PostMapping("/add-comment/{idUser}/{idRoom}")
+    public CommentRoom addComment(@RequestBody CommentRoom commentRoom,@PathVariable String idUser,@PathVariable Long idRoom){
+        return commentService.addComment(commentRoom, idUser, idRoom);
     }
 }

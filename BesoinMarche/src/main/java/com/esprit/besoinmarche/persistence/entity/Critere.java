@@ -1,6 +1,7 @@
 package com.esprit.besoinmarche.persistence.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +38,7 @@ public class Critere implements Serializable {
     private Double valeur;
 
     // Marché associé à un critère spécifique
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "marche_id")
     private Marche marche;

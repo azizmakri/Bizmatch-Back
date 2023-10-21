@@ -45,8 +45,8 @@ public class MarcheController {
         return marcheService.findMarchesByCritere(nom, valeur);
     }
 
-    @PostMapping("/marche/best-match")
-    public List<Marche> findBestMatch(@RequestBody Besoin besoin) {
-        return marcheService.findBestMatch(besoin);
+    @GetMapping("/marche/best-match/{besoinId}")
+    public List<Marche> findBestMatch(@PathVariable long besoinId) {
+        return marcheService.findBestMatch(besoinId);
     }
 }
