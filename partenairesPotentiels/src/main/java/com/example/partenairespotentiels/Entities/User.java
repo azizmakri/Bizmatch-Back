@@ -35,13 +35,15 @@ public class User {
     @Pattern(regexp = "[0-9]{8}", message = "Le numéro doit être composé de 8 chiffres")
     private String userNumber;
     private String userCode;
+    private String image;
+
     @Email
     private String userEmail;
     private int isverified;
     private String verificationToken;
     @Enumerated(EnumType.STRING)
     private RoleDemander roleDemander;
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
@@ -63,10 +65,7 @@ public class User {
 
 
 //************attributs ahmed***************
-    // Liste des discussions auxquelles cet utilisateur participe en tant qu'expéditeur ou destinataire
-    @JsonIgnore
-    @ManyToMany(mappedBy = "participantsDiscussion", cascade = CascadeType.ALL)
-    private List<Discussion> discussions;
+
 
     // Liste des articles de blog écrits par cet utilisateur
     @JsonIgnore
@@ -85,6 +84,27 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private TypeEntreprise typeEntreprise;
+
+
+
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "partnerships",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "partner_id")
+    )
+    private Set<User> partners;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "partnershipRequests",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "partner_id")
+    )
+    private Set<User> partnerRequests;
+
 
 
 //************attributs ahmed***************

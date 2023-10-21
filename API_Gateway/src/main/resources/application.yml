@@ -33,15 +33,63 @@ spring:
           lb://gestionAuth
         predicates:
           - Path=/auth/**
-
+        
       - id: gestionPartenairesPotentiels
         uri:
           lb://gestionPartenairesPotentiels
         predicates:
           - Path=/partenairesPotentiels/**
-        
+
       - id: gestionOpportuniteCollaboration
         uri:
           lb://gestionOpportuniteCollaboration
         predicates:
           - Path=/opportuniteCollaboration/**
+
+      - id: gestionEvenement_Conference
+        uri:
+          lb://gestionEvenement_Conference
+        predicates:
+          - Path=/evenement/**
+
+      - id: gestionReunion
+        uri:
+          lb://gestionReunion
+        predicates:
+          - Path=/reunion/**
+
+      - id: prestationService
+        uri:
+          lb://prestationService
+        predicates:
+          - Path=/prestationservice/**
+
+      - id: gestionDecouverteMarche
+        uri:
+          lb://gestionDecouverteMarche
+        predicates:
+          - Path=/Marche/**
+
+      - id: gestionBesoinMarche
+        uri:
+          lb://gestionBesoinMarche
+        predicates:
+          - Path=/besoinMarche/**
+
+      - id: GestionDeveloppementBusiness
+        uri:
+          lb://GestionDeveloppementBusiness
+        predicates:
+          - Path=/DevBusiness/**
+
+      - id: GestionPenetrationMarche
+        uri:
+          lb://GestionPenetrationMarche
+        predicates:
+          - Path=/marketing/**
+
+      - id: paymentMs
+        uri:
+          lb://paymentMs
+        predicates:
+          - Path=/api/**

@@ -1,6 +1,7 @@
 package com.esprit.bizmatch.rest;
 
 import com.esprit.bizmatch.persistence.entity.*;
+import com.esprit.bizmatch.persistence.enumeration.Domaines;
 import com.esprit.bizmatch.repositories.UserRepository;
 import com.esprit.bizmatch.services.Implementation.EmailServiceImpl;
 import com.esprit.bizmatch.services.Implementation.UserService;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
@@ -44,7 +46,29 @@ public class UserController {
         return ("hello auth service");
     }
 
+    @PutMapping("/user/updateAvecImage/{username}")
+    public ResponseEntity<User> updateAvecImage(
+            @PathVariable("username") String userName,
+            @RequestParam("userFirstName") String userFirstName,
+            @RequestParam("userLastName") String userLastName,
+            @RequestParam("image") MultipartFile image,
+            @RequestParam("domaines") Domaines domaines,
+            @RequestParam("siteWeb") String siteWeb,
+            @RequestParam("facebook") String facebook,
+            @RequestParam("linkedIn") String linkedIn,
+            @RequestParam("aboutMe") String aboutMe,
+            @RequestParam("location") String location) {
 
+        // Call the service to update the user with the new details and image
+        User updatedUser = userService.UpdateAvecImage(userName, userFirstName, userLastName, image, domaines, siteWeb, facebook, linkedIn, aboutMe, location);
+
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @GetMapping("/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return userService.retrieve(username);
+    }
     @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username , @RequestBody User userDetails) {
 
