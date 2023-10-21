@@ -23,11 +23,13 @@ public interface IEvenementService {
           String userName
   );
       public void deleteEvenement(Integer id, String userName);
-    public Evenement getEvenementById(Integer id, String userName);
+    public Evenement getEvenementById(Integer id);
     List<Evenement> getAllEvenements();
     public List<Evenement> getAllEvenementsByUserId(String userName);
     public boolean addFile(MultipartFile file);
     public Evenement addEvenement(String nom, String description, Date dateDebut, Date dateFin, MultipartFile image, String lieu, Integer nombreParticipants, String userName) ;
+  public void addFavoriEvenement(String username, Integer idEvent);
+  public List<Evenement> getEvenementsFavoris(String username);
 
 
 

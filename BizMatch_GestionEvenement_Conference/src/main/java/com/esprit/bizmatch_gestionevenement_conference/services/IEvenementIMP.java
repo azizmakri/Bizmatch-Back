@@ -1,8 +1,10 @@
 package com.esprit.bizmatch_gestionevenement_conference.services;
 
 import com.esprit.bizmatch_gestionevenement_conference.entities.Evenement;
+import com.esprit.bizmatch_gestionevenement_conference.entities.FavoriEvenement;
 import com.esprit.bizmatch_gestionevenement_conference.entities.User;
 import com.esprit.bizmatch_gestionevenement_conference.repositories.EvenementRepository;
+import com.esprit.bizmatch_gestionevenement_conference.repositories.FavorisEvenementRepository;
 import com.esprit.bizmatch_gestionevenement_conference.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +13,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +34,10 @@ public class IEvenementIMP implements IEvenementService{
     @Autowired
 
     private UserRepository userRepository;
+
+    @Autowired
+
+    private FavorisEvenementRepository favorisEvenementRepository;
 
     /*@Override
     public Evenement createEvenement(Evenement evenement, String userName) {
@@ -88,6 +96,40 @@ public class IEvenementIMP implements IEvenementService{
         Evenement savedEvenement = evenementRepository.save(evenement);
 
         return savedEvenement;
+    }
+
+    @Transactional
+    @Override
+    public void addFavoriEvenement(String idClient, Integer idEvent) {
+        User user = userRepository.findById(idClient).orElse(null);
+        Evenement evenement = evenementRepository.findById(idEvent).orElse(null);
+        if ( user != null && evenement != null ) {
+            FavoriEvenement favoriUserProduct = favorisEvenementRepository.findByUserAndEvenement(user, evenement);
+            if (favoriUserProduct == null) {
+                FavoriEvenement favoriEvenement = new FavoriEvenement();
+                favoriEvenement.setEvenement(evenement);
+                favoriEvenement.setUser(user);
+                favoriEvenement.setDateAjout(new Date());
+                favorisEvenementRepository.save(favoriEvenement);
+            } else {
+                favorisEvenementRepository.delete(favoriUserProduct);
+            }
+        }
+        log.info("user or product not found ");
+    }
+
+    @Override
+    public List<Evenement> getEvenementsFavoris(String username) {
+        User user = userRepository.findById(username).orElse(null);
+        if (user != null ) {
+            List<FavoriEvenement> favoris = favorisEvenementRepository.findByUser_UserName(username);
+            List<Evenement> evenementsFavoris = new ArrayList<>();
+            for (FavoriEvenement favori : favoris) {
+                evenementsFavoris.add(favori.getEvenement());
+            }
+            return evenementsFavoris;
+        }
+        return null;
     }
 
  /* @Override
@@ -189,14 +231,10 @@ public class IEvenementIMP implements IEvenementService{
     }
 
     @Override
-    public Evenement getEvenementById(Integer idEvent, String userName) {
+    public Evenement getEvenementById(Integer idEvent) {
         Evenement evenement = evenementRepository.findById(idEvent)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
-        User user = userRepository.findById(userName)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        if (!evenement.getOrganisateur().equals(user)) {
-            throw new RuntimeException("User not authorized to view this event");
-        }
+
         return evenement;
     }
 

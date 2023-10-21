@@ -33,6 +33,7 @@ public class gestionEventConfController {
     IParticipationService iParticipationService;
 
     //************************** Evenement Methods **********************************//
+
    /* @PostMapping("/createEvent/{userName}")
     public Evenement createEvenement(@RequestBody Evenement evenement, @PathVariable String userName) {
         return iEvenementService.createEvenement(evenement,userName);
@@ -101,9 +102,9 @@ public class gestionEventConfController {
         iEvenementService.deleteEvenement(idEvent, userName);
     }
 
-    @GetMapping("/getEvent/{idEvent}/{userName}")
-    public Evenement getEvenementById(@PathVariable Integer idEvent, @PathVariable String userName) {
-        return iEvenementService.getEvenementById(idEvent, userName);
+    @GetMapping("/getEvent/{idEvent}")
+    public Evenement getEvenementById(@PathVariable Integer idEvent) {
+        return iEvenementService.getEvenementById(idEvent);
     }
 
     @GetMapping("/getAllEvents")
@@ -118,11 +119,23 @@ public class gestionEventConfController {
     ///************************End-Evenement-Section *************************************//
 
     //************************ Participation Methods ***********************************//
-    @PostMapping("/participate/{eventId}/{userName}")
-    public String participateInEvent(@PathVariable Integer eventId, @PathVariable String userName) {
-        return iParticipationService.participateInEvent(eventId, userName);
-    }
+        @PostMapping("/participate/{eventId}/{userName}")
+        public String participateInEvent(@PathVariable Integer eventId, @PathVariable String userName) {
+            return iParticipationService.participateInEvent(eventId, userName);
+        }
     //************************ End-Participation-Section *********************//
+
+    //************************ Favoris Evenement *****************************//
+    @GetMapping("/favoris/{username}")
+    public List<Evenement> getEvenementsFavorisByuserName(@PathVariable String username) {
+        return iEvenementService.getEvenementsFavoris(username);
+    }
+
+    @PostMapping("/favoris/{username}/{idEvent}")
+    public void ajouterEvenementFavori(@PathVariable String username, @PathVariable Integer idEvent) {
+        iEvenementService.addFavoriEvenement(username, idEvent);
+    }
+    //************************ End ******************************************//
 
     //************************  Conference Methods ***************************//
 

@@ -44,4 +44,7 @@ public class Evenement implements Serializable {
     @JoinColumn(name = "organisateur_id")
     private User organisateur; // Utilisateur qui a créé l'événement
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "evenement" ,cascade = CascadeType.ALL)
+    private List<FavoriEvenement> favoriEvenements;
 }

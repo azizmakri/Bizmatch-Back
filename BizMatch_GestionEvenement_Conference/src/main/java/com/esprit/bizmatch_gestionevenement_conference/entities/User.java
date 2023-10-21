@@ -75,6 +75,9 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "organisateur")
     private List<Reunion> reunionsCrees;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<FavoriEvenement> favoriEvenementsList;
     //***************************************************************//
 
 

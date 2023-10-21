@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bae9658-4f88-4941-be39-25da83c14952" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API_Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../API_Gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/gestionEventConfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/controllers/gestionEventConfController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/Evenement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/Evenement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/services/IEvenementIMP.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/services/IEvenementIMP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/services/IEvenementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/java/com/esprit/bizmatch_gestionevenement_conference/services/IEvenementService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BizMatch_GestionEvenement_Conference/src/main/resources/application.properties" afterDir="false" />
@@ -32,24 +33,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "azer",
-    "last_opened_file_path": "C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/API_Gateway",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;azer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/5SAE1/Microservice/bizmatch/BizMatch_6microservices_GestionAzer_Evenement_Reunion_Conference/Back/Bizmatch-Back/EurekaServer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="EurekaServer" />
@@ -72,6 +73,10 @@
       <workItem from="1697452273218" duration="1576000" />
       <workItem from="1697455194581" duration="1019000" />
       <workItem from="1697544368372" duration="1964000" />
+      <workItem from="1697621504810" duration="1227000" />
+      <workItem from="1697628232908" duration="1871000" />
+      <workItem from="1697715139405" duration="3413000" />
+      <workItem from="1697811832807" duration="617000" />
     </task>
     <servers />
   </component>

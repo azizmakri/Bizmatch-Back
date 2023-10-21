@@ -46,11 +46,11 @@ spring:
         predicates:
           - Path=/opportuniteCollaboration/**
 
-      - id: gestionEvenement_Conference
+      - id: evenement
         uri:
-          lb://gestionEvenement_Conference
+          lb://evenement
         predicates:
-          - Path=/evenement/**
+          - Path=/gestionEventConf/**
 
       - id: gestionReunion
         uri:
