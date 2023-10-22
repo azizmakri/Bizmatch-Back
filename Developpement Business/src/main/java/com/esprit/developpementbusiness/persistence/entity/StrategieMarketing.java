@@ -1,6 +1,8 @@
 package com.esprit.developpementbusiness.persistence.entity;
 
 import com.esprit.developpementbusiness.persistence.enumeration.TypeStrategie;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +38,8 @@ public class StrategieMarketing implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "objectif_id")
+    @JsonIgnore
+    @JsonIgnoreProperties(value = {"strategies"})
     private ObjectifCommercial objectifCommercial; //L'objectif commercial associé à cette stratégie.
 
 

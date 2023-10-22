@@ -21,15 +21,15 @@ public class Discussion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDiscussion;
 
-    // Liste des participants à cette discussion (expéditeurs et destinataires)
-   
-    @ManyToMany
-    private List<User> participantsDiscussion;
+
+    private String name;
 
     // Liste des messages dans cette discussion
     @JsonIgnore
-    @OneToMany(mappedBy = "discussion", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "discussion", cascade = CascadeType.ALL)
     private List<Message> messagesDiscussion;
 
+    public Discussion(String name) {
+    }
 }
 

@@ -16,6 +16,7 @@ public class CampagneMarketingServiceIMP implements CampagneMarketingService {
    @Autowired
    private CampagneMarketingRepository CMRepository;
 
+
     @Override
     public CampagneMarketing save(CampagneMarketing campagneMarketing) {
         return CMRepository.save(campagneMarketing);

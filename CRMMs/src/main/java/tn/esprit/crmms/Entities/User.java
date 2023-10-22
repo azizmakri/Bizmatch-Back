@@ -1,7 +1,7 @@
-package com.esprit.gestionuser.persistence.entity;
+package tn.esprit.CRMMs.Entities;
 
-import com.esprit.gestionuser.persistence.enumeration.Domaines;
-import com.esprit.gestionuser.persistence.enumeration.RoleDemander;
+
+import tn.esprit.CRMMs.Entities.enums.RoleDemander;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -27,15 +27,32 @@ public class User {
     private String userCode;
     @Email
     private String userEmail;
-    public String getImage() {
-        return image;
+    @Enumerated(EnumType.STRING)
+    private tn.esprit.CRMMs.Entities.enums.Domaines Domaines;
+
+    @Enumerated(EnumType.STRING)
+    private RoleDemander roleDemander;
+
+
+    @OneToMany(mappedBy = "user")
+    private Set<Formulaire> formulaires;
+
+
+    public RoleDemander getRoleDemander() {
+        return roleDemander;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setRoleDemander(RoleDemander roleDemander) {
+        this.roleDemander = roleDemander;
+    }
+    public tn.esprit.CRMMs.Entities.enums.Domaines getDomaines() {
+        return Domaines;
     }
 
-    private String image;
+    public void setDomaines(tn.esprit.CRMMs.Entities.enums.Domaines domaines) {
+        Domaines = domaines;
+    }
+
     public String getUserEmail() {
         return userEmail;
     }
@@ -68,6 +85,54 @@ public class User {
         return userCode;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    private String location;
+    private String aboutMe;
+
+    public String getSiteWeb() {
+        return siteWeb;
+    }
+
+    public void setSiteWeb(String siteWeb) {
+        this.siteWeb = siteWeb;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getLinkedIn() {
+        return linkedIn;
+    }
+
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
+    }
+
+    private String siteWeb;
+    private String facebook;
+    private String linkedIn;
+
+
     public void setUserCode(String userCode) {
         this.userCode = userCode;
     }
@@ -80,17 +145,6 @@ public class User {
 
     public void setUserNumber(String userNumber) {
         this.userNumber = userNumber;
-    }
-
-    @Enumerated(EnumType.STRING)
-    private RoleDemander roleDemander;
-
-    public RoleDemander getRoleDemander() {
-        return roleDemander;
-    }
-
-    public void setRoleDemander(RoleDemander roleDemander) {
-        this.roleDemander = roleDemander;
     }
 
 
@@ -146,59 +200,7 @@ public class User {
         this.role = role;
     }
 
-    public String getLocation() {
-        return location;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
-    public String getAboutMe() {
-        return aboutMe;
-    }
-
-    public void setAboutMe(String aboutMe) {
-        this.aboutMe = aboutMe;
-    }
-
-    public String getSiteWeb() {
-        return siteWeb;
-    }
-
-    public void setSiteWeb(String siteWeb) {
-        this.siteWeb = siteWeb;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getLinkedIn() {
-        return linkedIn;
-    }
-
-    public void setLinkedIn(String linkedIn) {
-        this.linkedIn = linkedIn;
-    }
-
-    public com.esprit.gestionuser.persistence.enumeration.Domaines getDomaines() {
-        return Domaines;
-    }
-
-    public void setDomaines(com.esprit.gestionuser.persistence.enumeration.Domaines domaines) {
-        Domaines = domaines;
-    }
-
-    private String location;
-    private String aboutMe;
-    private String siteWeb;
-    private String facebook;
-    private String linkedIn;
-    @Enumerated(EnumType.STRING)
-    private Domaines Domaines;
 }
+

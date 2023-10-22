@@ -1,6 +1,8 @@
 package com.esprit.penetrationmarketing.persistence.entity;
 
 import com.esprit.penetrationmarketing.persistence.enumeration.TypeContenu;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,9 +33,13 @@ public class Contenu implements Serializable {
 
     private String lien;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    private String image;
+
+    @Temporal(TemporalType.DATE)
     private Date dateCreation;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JsonIgnoreProperties(value = {"contenus"})
     private CampagneMarketing campagneMarketing;
 }

@@ -1,10 +1,12 @@
-package com.example.partenairespotentiels.Repositories;
+package tn.esprit.CRMMs.Repositories;
 
-import com.example.partenairespotentiels.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import tn.esprit.CRMMs.Entities.User;
+
+import javax.transaction.Transactional;
 
 @Repository
+@Transactional
 public interface UserRepository extends JpaRepository<User, String> {
-    User findByUserName(String userName);
 }

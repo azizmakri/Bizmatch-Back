@@ -26,6 +26,7 @@ public class Evenement implements Serializable {
     private Date dateDebut;
     @Temporal(TemporalType.DATE)
     private Date dateFin;
+    private String imagePath;
 
     private String lieu;
     private Integer nombreParticipants;
@@ -35,7 +36,7 @@ public class Evenement implements Serializable {
     private List<Participation> participations;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "evenement")
+    @OneToMany(mappedBy = "evenement", cascade = CascadeType.ALL)
     private List<Conference> conferences;
 
     @JsonIgnore
@@ -43,4 +44,7 @@ public class Evenement implements Serializable {
     @JoinColumn(name = "organisateur_id")
     private User organisateur; // Utilisateur qui a créé l'événement
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "evenement" ,cascade = CascadeType.ALL)
+    private List<FavoriEvenement> favoriEvenements;
 }

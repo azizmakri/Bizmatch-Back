@@ -24,12 +24,12 @@ public class StrategieMarketingController {
         return	strategieService.Update(strategieMarketing);
     }
 
-    @GetMapping("/strategie/getAll")
+    @GetMapping("/strategie/")
     public List<StrategieMarketing> getAll() {
         return strategieService.findAll();
     }
 
-    @GetMapping("/strategie/getById/{id}")
+    @GetMapping("/strategie/{id}")
     public StrategieMarketing getById(@PathVariable Long id) {
         return strategieService.findById(id);
     }

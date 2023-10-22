@@ -33,6 +33,15 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private RoleDemander roleDemander;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
 
     public RoleDemander getRoleDemander() {
         return roleDemander;

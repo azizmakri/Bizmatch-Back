@@ -36,4 +36,12 @@ public class PaymentControlleur {
         return new ResponseEntity<>(payments, HttpStatus.OK);
     }
 
+    @GetMapping("/getall")
+    public ResponseEntity<List<Payment>> getListPayment() {
+        return new ResponseEntity<>(paymentRepository.findAll(), HttpStatus.OK);
+    }
+
+
+
+
 }
