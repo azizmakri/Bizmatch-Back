@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/gestionAuth
+COPY target/*.jar /app/gestionAuth.jar
+EXPOSE 9001
+CMD ["java","-jar","/app/gestionAuth.jar"]

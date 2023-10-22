@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/API_GATEWAY
+COPY target/*.jar /app/API_GATEWAY.jar
+EXPOSE 8083
+CMD ["java","-jar","/app/API_GATEWAY.jar"]

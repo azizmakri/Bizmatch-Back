@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/payment")
+@RequestMapping(value = "/api/payment")
 @CrossOrigin("*")
 public class PaymentControlleur {
 

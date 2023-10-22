@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/PartenairesPotentiels
+COPY target/*.jar /app/PartenairesPotentiels.jar
+EXPOSE 9003
+CMD ["java","-jar","/app/PartenairesPotentiels.jar"]

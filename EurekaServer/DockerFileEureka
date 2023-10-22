@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/EurekaServer
+COPY target/*.jar /app/EurekaServer.jar
+EXPOSE 8761
+CMD ["java","-jar","/app/EurekaServer.jar"]

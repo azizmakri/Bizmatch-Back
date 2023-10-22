@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
 WORKDIR /app/EventConference
 COPY target/*.jar /app/EventConference.jar
-EXPOSE 9093
+EXPOSE 9004
 CMD ["java","-jar","/app/EventConference.jar"]

@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
 WORKDIR /app/PrestationService
 COPY target/*.jar /app/PrestationService.jar
-EXPOSE 9590
+EXPOSE 9007
 CMD ["java","-jar","/app/PrestationService.jar"]

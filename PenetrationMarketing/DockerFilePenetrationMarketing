@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
 WORKDIR /app/PenetrationMarketing
 COPY target/*.jar /app/PenetrationMarketing.jar
-EXPOSE 9092
+EXPOSE 9011
 CMD ["java","-jar","/app/PenetrationMarketing.jar"]

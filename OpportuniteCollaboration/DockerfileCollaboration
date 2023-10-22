@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/Collaboration
+COPY target/*.jar /app/Collaboration.jar
+EXPOSE 9002
+CMD ["java","-jar","/app/Collaboration.jar"]

@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app/CRMMs
+COPY target/*.jar /app/CRMMs.jar
+EXPOSE 9014
+CMD ["java","-jar","/app/CRMMs.jar"]
