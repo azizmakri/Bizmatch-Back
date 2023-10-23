@@ -1,5 +1,7 @@
 package com.esprit.decouvertemarche.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +38,7 @@ public class OpportuniteMarche implements Serializable {
     private Boolean accepte;
 
     @OneToMany(mappedBy = "opportuniteMarche", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"opportuniteMarche"})
     private List<Tendance> tendances;
 
     @OneToMany(mappedBy = "opportuniteMarche", cascade = CascadeType.ALL)

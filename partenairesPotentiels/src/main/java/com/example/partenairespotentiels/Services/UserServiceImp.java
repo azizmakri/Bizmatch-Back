@@ -115,11 +115,7 @@ public class UserServiceImp implements UserService{
         if (user.equals(desiredPartner)) {
             throw new IllegalArgumentException("You can't send a partnership request to yourself.");
         }
-
-        // Check if the user's roleDemander is not equal to "entreprise"
-        if (user.getRoleDemander() != RoleDemander.entreprise) {
-            throw new IllegalArgumentException("You can only send partnership requests if your role is entreprise.");
-        }
+        
 
         // Add the user to the desired partner's partnership request list
         desiredPartner.getPartnerRequests().add(user);

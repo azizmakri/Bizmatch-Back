@@ -2,6 +2,7 @@ package com.esprit.developpementbusiness.persistence.entity;
 
 import com.esprit.developpementbusiness.persistence.enumeration.Domaines;
 import com.esprit.developpementbusiness.persistence.enumeration.RoleDemander;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -61,6 +62,7 @@ public class User {
     private Set<Role> role;
 
     @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"entreprise"})
     private List<ObjectifCommercial> objectifs;
 
     @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)

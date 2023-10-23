@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
 WORKDIR /app/DecouverteMarche
 COPY target/*.jar /app/DecouverteMarche.jar
-EXPOSE 9008
+EXPOSE 9090
 CMD ["java","-jar","/app/DecouverteMarche.jar"]

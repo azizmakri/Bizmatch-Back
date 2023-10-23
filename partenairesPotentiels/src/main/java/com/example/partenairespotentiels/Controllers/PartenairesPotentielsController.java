@@ -9,6 +9,7 @@ import com.example.partenairespotentiels.Repositories.MessageRepository;
 import com.example.partenairespotentiels.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -175,7 +176,9 @@ public class PartenairesPotentielsController {
         return userService.retrieveUserById(idUser);
     };
 
+
     @GetMapping("/retrieveallusers")
+  //  @GetMapping(value = "/retrieveallusers", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> retrieveAllUsers(){
         return userService.retrieveAllUsers();
     };

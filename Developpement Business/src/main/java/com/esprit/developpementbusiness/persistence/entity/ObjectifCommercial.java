@@ -1,6 +1,7 @@
 package com.esprit.developpementbusiness.persistence.entity;
 
 import com.esprit.developpementbusiness.persistence.enumeration.EtatObjectif;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -43,6 +44,8 @@ public class ObjectifCommercial implements Serializable {
     private EtatObjectif etat; //L'état actuel de l'objectif (en cours, atteint, non atteint).
 
     @ManyToOne( fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JsonIgnoreProperties(value = {"objectifs"})
     private User entreprise;
 
     @OneToMany(mappedBy = "objectifCommercial", fetch = FetchType.LAZY)
