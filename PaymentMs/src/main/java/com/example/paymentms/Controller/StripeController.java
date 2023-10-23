@@ -82,7 +82,6 @@ public class StripeController {
         newPayment.setSuccessUrl(payment.getSuccessUrl());
         newPayment.setCurrency(payment.getCurrency());
 
-
         User staticUser = userRepository.findById(userName).orElse(null);
         if (staticUser == null) {
             throw new RuntimeException("Static user not found!"); // or handle this case as you see fit
