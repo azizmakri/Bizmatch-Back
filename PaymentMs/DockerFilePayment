@@ -1,5 +1,0 @@
-FROM openjdk:8-jdk-alpine
-WORKDIR /app/PaymentMs
-COPY target/*.jar /app/PaymentMs.jar
-EXPOSE 9003
-CMD ["java","-jar","/app/PaymentMs.jar"]

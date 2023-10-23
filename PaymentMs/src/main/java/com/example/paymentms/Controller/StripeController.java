@@ -10,6 +10,7 @@ import com.example.paymentms.Model.User;
 import com.example.paymentms.Repository.PaymentRepository;
 import com.example.paymentms.Repository.ServiceFornisseurRepo;
 import com.example.paymentms.Repository.UserRepository;
+import com.example.paymentms.Service.CurrencyConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,9 @@ public class StripeController {
     @Autowired
     private ServiceFornisseurRepo serviceFornisseurRepo;
 
+    @Autowired
+    private CurrencyConversionService currencyConversionService;
+
 
     // create a Gson object
     private static Gson gson = new Gson();
@@ -46,65 +50,64 @@ public class StripeController {
      *
      * @throws StripeException
      */
-    public String paymentWithCheckoutPage(@RequestBody CheckoutPayment payment,String userName,
-                                          Long idServiceFournisseur) throws StripeException {
+    public String paymentWithCheckoutPage(@RequestBody CheckoutPayment payment,String userName, Long idServiceFournisseur) throws StripeException {
 
-        // We initilize stripe object with the api key
+        // Convert TND to USD
+        double amountInUSD = currencyConversionService.convertTNDtoUSD(payment.getAmount());
+
+        // Initialize stripe object with the API key
         init();
-        // We create a  stripe session parameters
+
+        // Convert the USD amount to cents for Stripe since Stripe works in the smallest unit of any currency
+        long amountInCents = (long) (amountInUSD * 100);
+
         SessionCreateParams params = SessionCreateParams.builder()
-                // We will use the credit card payment method
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-                .setMode(SessionCreateParams.Mode.PAYMENT).setSuccessUrl(payment.getSuccessUrl())
-                .setCancelUrl(
-                        payment.getCancelUrl())
+                .setMode(SessionCreateParams.Mode.PAYMENT)
+                .setSuccessUrl(payment.getSuccessUrl())
+                .setCancelUrl(payment.getCancelUrl())
                 .addLineItem(
-                        SessionCreateParams.LineItem.builder().setQuantity(payment.getQuantity())
+                        SessionCreateParams.LineItem.builder()
+                                .setQuantity(payment.getQuantity())
                                 .setPriceData(
                                         SessionCreateParams.LineItem.PriceData.builder()
-                                                .setCurrency(payment.getCurrency()).setUnitAmount(payment.getAmount())
+                                                .setCurrency("usd")  // Now setting currency as USD since we've converted the amount to USD
+                                                .setUnitAmount(amountInCents)
                                                 .setProductData(SessionCreateParams.LineItem.PriceData.ProductData
                                                         .builder().setName(payment.getName()).build())
                                                 .build())
                                 .build())
                 .build();
-        // create a stripe session
+
+        // Create a stripe session
         Session session = Session.create(params);
         Map<String, String> responseData = new HashMap<>();
-        // We get the sessionId and we putted inside the response data you can get more info from the session object
         responseData.put("id", session.getId());
-        // We can return only the sessionId as a String
+
+        // Create and save newPayment
         Payment newPayment = new Payment();
         newPayment.setName(payment.getName());
-        newPayment.setAmount(payment.getAmount());
+        double tndamount = amountInCents /100.0;
+        newPayment.setAmount((long) tndamount);  // Save the converted amount (in cents) into the payment record
         newPayment.setQuantity(payment.getQuantity());
         newPayment.setCancelUrl(payment.getCancelUrl());
         newPayment.setSuccessUrl(payment.getSuccessUrl());
-        newPayment.setCurrency(payment.getCurrency());
-
+        newPayment.setCurrency("usd");  // Set currency of the payment record as USD
 
         User staticUser = userRepository.findById(userName).orElse(null);
         if (staticUser == null) {
-            throw new RuntimeException("Static user not found!"); // or handle this case as you see fit
-
+            throw new RuntimeException("Static user not found!");
         }
 
-        ServiceFournisseur serviceFournisseur =serviceFornisseurRepo.findById(idServiceFournisseur).orElse(null);
+        ServiceFournisseur serviceFournisseur = serviceFornisseurRepo.findById(idServiceFournisseur).orElse(null);
         if (serviceFournisseur == null) {
-            throw new RuntimeException("Static user not found!"); // or handle this case as you see fit
-
+            throw new RuntimeException("Service Fournisseur not found!");
         }
         newPayment.setServiceFournisseur(serviceFournisseur);
         newPayment.setUser(staticUser);
         newPayment.setPaymentStatus("payment successful");
 
-
-
-
         paymentRepository.save(newPayment);
-
-
-
 
         return gson.toJson(responseData);
     }
@@ -113,7 +116,7 @@ public class StripeController {
 
 
     private static void init() {
-        Stripe.apiKey = "sk_test_51KZPLpK9uxhGdpuqEQuLMDPvriZm3vPdL57rGiLTO7lLvgyrGI40g0KBbMkxbVjXjhN6KH6Opz5R7sXHJChay7Dx006mDEbAId";
+        Stripe.apiKey = "sk_test_51O4Om8GxnCYriM4YeLIOhGou192DKBEqKsqUOxaxyTnuXU2Bf8pO7qAySeupJXO3RK2WKtiS9uwHxZ2TCyH2RUgs00TvFFPGOi";
     }
 
 
