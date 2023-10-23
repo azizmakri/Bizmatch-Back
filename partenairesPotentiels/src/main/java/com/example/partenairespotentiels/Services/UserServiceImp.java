@@ -115,7 +115,7 @@ public class UserServiceImp implements UserService{
         if (user.equals(desiredPartner)) {
             throw new IllegalArgumentException("You can't send a partnership request to yourself.");
         }
-        
+
 
         // Add the user to the desired partner's partnership request list
         desiredPartner.getPartnerRequests().add(user);
