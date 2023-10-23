@@ -22,9 +22,8 @@ public class Reunion  implements Serializable {
     private Integer id;
     private String sujet;
     @Temporal(TemporalType.DATE)
-    private Date dateDebut;
-    @Temporal(TemporalType.DATE)
-    private Date dateFin;
+    private Date dateReunion;
+
 
     private String lieu;
 
